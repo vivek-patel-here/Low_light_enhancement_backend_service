@@ -1,6 +1,7 @@
 from flask import Flask, request, send_file, jsonify
 from PIL import Image
 import io
+import os
 import torch
 import torch.nn as nn
 import model
@@ -77,5 +78,7 @@ def enhance_image():
 
 
 
+
 if __name__ == "__main__":
-    app.run(debug=True)
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host="0.0.0.0", port=port, debug=False)
